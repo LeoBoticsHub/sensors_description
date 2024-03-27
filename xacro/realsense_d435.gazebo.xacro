@@ -1,6 +1,6 @@
-<!-- Copyright (C) 2024, Federico Rollo -->
-
 <?xml version="1.0"?>
+
+<!-- Copyright (C) 2024, Federico Rollo -->
 
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
