@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package format="2">
+<package format="3">
     <name>sensors_description</name>
     <version>0.0.0</version>
     <description>The sensors_description package</description>
@@ -7,6 +7,11 @@
     <maintainer email="federico.rollo@leonardo.com">Federico Rollo</maintainer>
     <license>BSD</license>
 
-    <buildtool_depend>catkin</buildtool_depend>
+    <buildtool_depend condition="$ament_cmake_FOUND == true">ament_cmake</buildtool_depend>
+    <buildtool_depend condition="$catkin_FOUND == true">catkin</buildtool_depend>
+
+    <export>                               
+        <build_type>ament_cmake</build_type> 
+    </export> 
 
 </package>
