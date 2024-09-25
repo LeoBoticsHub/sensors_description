@@ -53,7 +53,7 @@
       <visual>
       <origin xyz="${d430_cam_mount_from_center_offset} ${-d430_cam_depth_py} 0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
         <geometry>
-          <mesh filename="package://sensors_description/meshes/realsense_d435.stl" />
+          <mesh filename="file://$(find sensors_description)/meshes/realsense_d435.stl" />
         </geometry>
         <material name="${name}_aluminum"/>
       </visual>
