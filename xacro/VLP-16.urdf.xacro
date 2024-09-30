@@ -194,42 +194,6 @@
         </xacro:unless>
       </gazebo>
     </xacro:unless>
-
-    <!-- <gazebo reference="${name}">
-      <sensor name="${name}-VLP16" type="gpu_lidar">
-        <update_rate>${hz}</update_rate>
-        <visualize>true</visualize>
-        <always_on>true</always_on>
-        <ignition_frame_id>${name}</ignition_frame_id>
-        <topic>${topic}</topic>
-        <lidar>
-          <scan>
-            <horizontal>
-              <samples>${samples}</samples>
-              <resolution>1</resolution>
-              <min_angle>${min_angle}</min_angle>
-              <max_angle>${max_angle}</max_angle>
-            </horizontal>
-            <vertical>
-              <samples>${lasers}</samples>
-              <resolution>1</resolution>
-              <min_angle>-${15.0*M_PI/180.0}</min_angle>
-              <max_angle> ${15.0*M_PI/180.0}</max_angle>
-            </vertical>
-          </scan>
-          <range>
-            <min>${collision_range}</min>
-            <max>${max_range+1}</max>
-            <resolution>0.001</resolution>
-          </range>
-          <noise>
-            <type>gaussian</type>
-            <mean>0.0</mean>
-            <stddev>0.0</stddev>
-          </noise>
-        </lidar>
-      </sensor>
-    </gazebo> -->
     
   </xacro:macro>
 </robot>
