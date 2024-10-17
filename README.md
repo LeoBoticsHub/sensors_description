@@ -10,11 +10,10 @@ The following sensors descriptions are available:
 - realsense_d435
 - realsense_d455
 - zed_mini
-- VLP-16
 
 ## Environment
 
-We recommand users to run this package in Ubuntu 22.04 and ROS 2 Humble.
+We recommand users to run this package in Ubuntu 20.04 and ROS noetic environment.
 
 ## Authors
 
