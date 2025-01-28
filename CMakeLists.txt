@@ -1,30 +1,42 @@
 cmake_minimum_required(VERSION 3.5)
 project(sensors_description)
 
-find_package(catkin QUIET)
-find_package(ament_cmake QUIET)
+add_compile_options(-Wall -Wextra -Wpedantic -Wno-dev)
 
-if(${catkin_FOUND})
+message(STATUS "Environment variable ROS_DISTRO = $ENV{ROS_DISTRO}")
 
-    catkin_package()
+# Check the ROS version and install the directories accordingly
+if(DEFINED ENV{ROS_VERSION} AND $ENV{ROS_VERSION} EQUAL 2)
 
-    set(SHARE_DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+    # ROS2 colcon build
+    find_package(ament_cmake REQUIRED)
 
-elseif(${ament_cmake_FOUND})
+    install(
+        DIRECTORY xacro meshes
+        DESTINATION share/${PROJECT_NAME}
+    )
 
     ament_package()
 
-    set(SHARE_DESTINATION share/${PROJECT_NAME})
+elseif(DEFINED ENV{ROS_VERSION} AND $ENV{ROS_VERSION} EQUAL 1)
+
+    # ROS1 catkin make
+    find_package(catkin REQUIRED)
+
+	catkin_package()
+
+    install(
+		DIRECTORY xacro
+        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/xacro
+    )
+
+	install(
+		DIRECTORY meshes
+        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/meshes
+    )
+
+else()
+	message(FATAL_ERROR "ROS_VERSION environment variable not set!")
 
 endif()
 
-# Install
-install(
-  DIRECTORY xacro
-  DESTINATION ${SHARE_DESTINATION}
-)
-
-install(
-  DIRECTORY meshes
-  DESTINATION ${SHARE_DESTINATION}
-)

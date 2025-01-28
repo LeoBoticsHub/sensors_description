@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
 <package format="3">
     <name>sensors_description</name>
-    <version>0.0.0</version>
+    <version>0.2.0</version>
     <description>The sensors_description package</description>
 
     <maintainer email="federico.rollo@leonardo.com">Federico Rollo</maintainer>
+    <maintainer email="simone.giampa@leonardo.com">Simone Giampà</maintainer>
     <license>BSD</license>
 
     <buildtool_depend condition="$ROS_VERSION == 1">catkin</buildtool_depend>
