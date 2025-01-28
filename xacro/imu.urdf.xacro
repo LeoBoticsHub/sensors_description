@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<robot name="sensor_imu" xmlns:xacro="http://wiki.ros.org/xacro">
+
+	<!-- Solid cuboid of width w, height h, depth d, and mass m -->
+	<!-- w relates to X axis, d to Z axis, and h to Y axis -->
+	<!-- Keep this comment -->
+	<xacro:macro name="solid_cuboid_inertia" params="m w h d">
+		<inertia ixx="${(m*(h*h+d*d))/12}" ixy="0" ixz="0"
+			iyy="${(m*(w*w+d*d))/12}" iyz="0"
+			izz="${(m*(w*w+h*h))/12}"
+		/>
+	</xacro:macro>
+
+	<xacro:macro name="sensor_imu" params="prefix parent *origin">
+
+		<joint name="${prefix}_joint" type="fixed">
+			<axis xyz="1 0 0" />
+			<xacro:insert_block name="origin" />
+			<parent link="${parent}" />
+			<child link="${prefix}_link" />
+		</joint>
+		<link name="${prefix}_link">
+			<inertial>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<mass value="0.05" />
+				<xacro:solid_cuboid_inertia m="0.05" w="0.021" h="0.027" d="0.003" />
+			</inertial>
+			<visual>
+				<origin rpy="0 0 0" xyz="0 0 0" />
+				<geometry>
+					<box size="0.021 0.027 0.003" />
+				</geometry>
+			</visual>
+			<collision>
+				<origin rpy="0 0 0" xyz="0 0 0" />
+				<geometry>
+					<box size=".001 .001 .001" />
+				</geometry>
+			</collision>
+		</link>
+
+	</xacro:macro>
+</robot>
