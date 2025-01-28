@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <robot name="sensor_hokuyo_ust10lx" xmlns:xacro="http://wiki.ros.org/xacro">
 
-	<xacro:macro name="sensor_hokuyo_ust10lx"
-		params="prefix parent prefix_topic:='front_laser' *origin min_angle:=-2.3562 max_angle:=2.3562 gpu:=^|true">
+	<xacro:macro name="sensor_hokuyo_ust10lx" params="prefix parent *origin ">
 
 		<joint name="${prefix}_base_joint" type="fixed">
 			<xacro:insert_block name="origin" />
@@ -43,7 +42,8 @@
 
 	</xacro:macro>
 
-<!--
+	<!-- default values:  topic = front_laser | rear_laser min_angle:=-2.3562 max_angle:=2.3562 gpu:=^|true -->
+	<!--
 	<xacro:macro name="sensor_hokuyo_ust10_gazebo">
 		<gazebo reference="${prefix}_link">
 			<xacro:if value="${gpu}">
@@ -88,6 +88,7 @@
 				</plugin>
 			</sensor>
 		</gazebo>
-	</xacro:macro>-->
+	</xacro:macro>
+	-->
 
 </robot>

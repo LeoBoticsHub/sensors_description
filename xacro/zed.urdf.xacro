@@ -100,7 +100,8 @@
 
 	</xacro:macro>
 
-	<!-- default values: format:=R8G8B8 near:=0.05 far:=2500
+	<!-- default values: format:=R8G8B8 near:=0.05 far:=2500 -->
+	<!--
 	<xacro:macro name="sensor_zed" params="prefix:=myzed parent *origin model:=zed">
 		<xacro:sensor_zed prefix="${prefix}" parent="${parent}" model="${model}">
 			<xacro:insert_block name="origin" />
@@ -180,15 +181,17 @@
 	</xacro:macro>
 	-->
 
-	<!--<xacro:stereo_camera
-			prefix="${prefix}"
-			hfov="1.2217"
-			baseline="${baseline}"
-			fps="40"
-			width="640"
-			height="480"
-			format="${format}"
-			near="${near}"
-			far="${far}" />-->
+	<!--
+	<xacro:stereo_camera
+		prefix="${prefix}"
+		hfov="1.2217"
+		baseline="${baseline}"
+		fps="40"
+		width="640"
+		height="480"
+		format="${format}"
+		near="${near}"
+		far="${far}" />
+	-->
 
 </robot>
