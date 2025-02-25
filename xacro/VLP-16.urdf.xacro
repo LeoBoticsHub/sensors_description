@@ -62,7 +62,6 @@
       </collision>
     </link>
 
-    <!-- Gazebo requires the velodyne_gazebo_plugins package -->
     <xacro:if value="${ign}">
       <gazebo reference="${name}">
         <sensor name="${name}-VLP16" type="gpu_lidar">

@@ -1,14 +1,10 @@
 <?xml version="1.0"?>
 
-<!-- Copyright (C) 2024, Federico Rollo -->
-
-
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:macro name="gazebo_d455" params="camera_name reference_link topics_ns 
   depth_optical_frame color_optical_frame infrared1_optical_frame infrared2_optical_frame" >
 
-    <!-- Load parameters to model's main link-->
     <xacro:property name="deg_to_rad" value="0.01745329251994329577" />
     <gazebo reference="${reference_link}">
       <self_collide>0</self_collide>

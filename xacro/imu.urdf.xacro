@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
 <robot name="sensor_imu" xmlns:xacro="http://wiki.ros.org/xacro">
 
-	<!-- Solid cuboid of width w, height h, depth d, and mass m -->
-	<!-- w relates to X axis, d to Z axis, and h to Y axis -->
-	<!-- Keep this comment -->
 	<xacro:macro name="solid_cuboid_inertia" params="m w h d">
 		<inertia ixx="${(m*(h*h+d*d))/12}" ixy="0" ixz="0"
 			iyy="${(m*(w*w+d*d))/12}" iyz="0"

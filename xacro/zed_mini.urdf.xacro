@@ -1,8 +1,5 @@
 <?xml version="1.0"?>
 
-<!-- Copyright (C) 2024, Federico Rollo -->
-
-
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:include filename="$(find sensors_description)/xacro/zed_mini.gazebo.xacro"/>
@@ -15,11 +12,8 @@
   <xacro:property name="optical_offset_x" value="0.0" />
   <xacro:property name="deg_to_rad" value="0.01745329251994329577" />
 
-  <!-- ZED MINI --> 
-
   <xacro:macro name="zed_mini" params="sensor_name parent_link rate *origin robot_name disable_lumping:=true">
 
-    <!-- Camera mounting point (the threaded screw hole in the bottom) -->
     <link name="${sensor_name}_base_link" />
     <joint name="${sensor_name}_base_joint" type="fixed">
       <parent link="${parent_link}"/>
@@ -27,7 +21,6 @@
       <xacro:insert_block name="origin" />
     </joint>
 
-    <!-- odom frame for odometry -->
     <link name="${sensor_name}_odom_frame"/>
     <joint name="${sensor_name}_odom_frame_joint" type="fixed">
       <parent link="${sensor_name}_base_link"/>
@@ -35,7 +28,6 @@
       <origin xyz="0 0 0" rpy="0 0 0"/>
     </joint>
 
-    <!-- fake odom frame to disable odom lumping -->
     <link name="${sensor_name}_fake_odom">
       <inertial>
         <mass value="0.001"/>
@@ -54,14 +46,12 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
     </joint>
 
-    <!-- Camera Center -->
     <link name="${sensor_name}_camera_center">
       <visual>
         <origin xyz="${screw_offset_x} 0 0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://sensors_description/meshes/zed_mini.stl" />
         </geometry>
-        <!-- <material name="${model}_mat" /> -->
       </visual>
       <collision>
         <geometry>
@@ -85,7 +75,6 @@
       <origin xyz="0 0 ${height/2}" rpy="0 ${bottom_slope} 0" />
     </joint>
 
-    <!-- Left Camera -->
     <link name="${sensor_name}_l_camera_color_optical_frame" />
     <joint name="${sensor_name}_left_camera_optical_joint" type="fixed">
       <parent link="${sensor_name}_camera_center"/>
@@ -100,7 +89,6 @@
       <child link="${sensor_name}_l_camera_depth_optical_frame"/>
     </joint>
 
-    <!-- Right Camera -->
     <link name="${sensor_name}_r_camera_color_optical_frame" />
     <joint name="${sensor_name}_right_camera_optical_joint" type="fixed">
       <parent link="${sensor_name}_camera_center"/>

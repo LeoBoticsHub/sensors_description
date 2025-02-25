@@ -1,8 +1,5 @@
 <?xml version="1.0"?>
 
-<!-- Copyright (C) 2024, Federico Rollo -->
-
-
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:macro name="gazebo_zedm" params="camera_name reference_frame baseline left_depth_optical_frame 
@@ -10,10 +7,8 @@
   gyro_frame camera_center odom_frame odom_frame_joint robot_name
   disable_lumping:=true" >
 
-    <!-- Load parameters to model's main link-->
     <xacro:property name="deg_to_rad" value="0.01745329251994329577" />
 
-    <!-- LEFT CAMERA WITH DEPTH -->
     <gazebo reference="${left_color_optical_frame}">
       <sensor name="left_camera" type="depth">
         <update_rate>30</update_rate>
@@ -44,7 +39,6 @@
           <frameName>${left_depth_optical_frame}</frameName>
           <pointCloudCutoff>0.3</pointCloudCutoff>
           <pointCloudCutoffMax>15.0</pointCloudCutoffMax>
-          <!-- TODO modify intrinsic params -->
           <distortionK1>0.00000001</distortionK1>
           <distortionK2>0.00000001</distortionK2>
           <distortionK3>0.00000001</distortionK3>
@@ -59,8 +53,7 @@
       </sensor>
     </gazebo>
 
-    <!-- RIGHT CAMERA -->
-        <gazebo reference="${right_color_optical_frame}">
+    <gazebo reference="${right_color_optical_frame}">
       <sensor name="right_camera" type="depth">
         <update_rate>30</update_rate>
         <camera>
@@ -90,7 +83,6 @@
           <frameName>${right_depth_optical_frame}</frameName>
           <pointCloudCutoff>0.3</pointCloudCutoff>
           <pointCloudCutoffMax>15.0</pointCloudCutoffMax>
-          <!-- TODO modify intrinsic params -->
           <distortionK1>0.00000001</distortionK1>
           <distortionK2>0.00000001</distortionK2>
           <distortionK3>0.00000001</distortionK3>
@@ -105,7 +97,6 @@
       </sensor>
     </gazebo>
 
-    <!-- IMU -->
     <gazebo reference="${gyro_frame}">
         <gravity>true</gravity>
         <sensor name="${camera_name}_imu" type="imu">
@@ -125,7 +116,6 @@
         </sensor>
     </gazebo>
 
-    <!-- ODOMETRY -->
     <gazebo reference="${odom_frame_joint}">
         <disableFixedJointLumping>${disable_lumping}</disableFixedJointLumping>
     </gazebo>
